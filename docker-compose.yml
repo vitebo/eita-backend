@@ -22,7 +22,7 @@ services:
       - postgres
 
   postgres:
-    image: postgres:13-alpine
+    image: ankane/pgvector
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_PASSWORD: eita

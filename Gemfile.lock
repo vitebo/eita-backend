@@ -104,6 +104,8 @@ GEM
     minitest (5.19.0)
     msgpack (1.7.2)
     multipart-post (2.3.0)
+    neighbor (0.2.3)
+      activerecord (>= 5.2)
     net-imap (0.3.7)
       date
       net-protocol
@@ -174,6 +176,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  neighbor (~> 0.2.3)
   pg
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
