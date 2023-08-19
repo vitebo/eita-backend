@@ -21,4 +21,4 @@ RUN chmod +x start.sh
 
 ENTRYPOINT ["./start.sh"]
 
-EXPOSE 3001 80
+EXPOSE 3001
