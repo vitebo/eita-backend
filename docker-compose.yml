@@ -1,17 +1,31 @@
-version: "3"
+version: "3.5"
 
 services:
-  eita-backend:
+  eita_backend:
+    tty: true
+    stdin_open: true
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
-    ports:
-      - "3001:3001"
-    depends_on:
-      - postgres
     environment:
       DB_HOST: postgres
+    ports:
+      - 3001:3001
+      - 80:80
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:13-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_PASSWORD: eita
     ports:
-      - "5432:5432"
+      - 5432:5432
+    volumes:
+      - postgres13:/var/lib/postgresql/data
+
+volumes:
+  postgres13:
