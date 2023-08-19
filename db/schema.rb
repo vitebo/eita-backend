@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema[7.0].define(version: 2023_08_19_215142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
+
+  create_table "contents", force: :cascade do |t|
+    t.string "title"
+    t.string "category"
+    t.string "kind"
+    t.text "raw_body"
+    t.text "body"
+    t.json "embedding"
+    t.string "updated_at", limit: 50
+  end
 
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
