@@ -9,6 +9,9 @@ services:
       dockerfile: Dockerfile
     environment:
       DB_HOST: postgres
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres
+      DB_PORT: 5432
     ports:
       - 3001:3001
     volumes:

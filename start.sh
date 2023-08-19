@@ -7,5 +7,7 @@ set -e
 bundle exec rails db:create
 bundle exec rails db:migrate
 
+rm -rf /app/tmp/pids/server.pid
+
 # start project
 bundle exec rails s -b 0.0.0.0 -p 3001
