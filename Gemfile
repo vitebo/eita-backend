@@ -47,3 +47,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "neighbor", "~> 0.2.3"
