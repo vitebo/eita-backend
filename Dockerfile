@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:2.7-alpine
+FROM ruby:3.2.2-alpine
 
 ENV RAILS_SERVE_STATIC_FILES=true
 

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2023_08_19_215142) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_19_233940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -23,7 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_215142) do
     t.text "raw_body"
     t.text "body"
     t.json "embedding"
-    t.string "updated_at", limit: 50
   end
 
   create_table "tags", force: :cascade do |t|
@@ -34,7 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_215142) do
 
   create_table "users", force: :cascade do |t|
     t.string "name", limit: 50, null: false
-    t.json "embeddings"
+    t.vector "embeddings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
