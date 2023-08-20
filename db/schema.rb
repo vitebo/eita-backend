@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_002130) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_010100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -21,7 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_002130) do
     t.string "kind"
     t.text "raw_body"
     t.text "body"
-    t.json "embedding"
+    t.vector "embedding"
   end
 
   create_table "tags", force: :cascade do |t|
