@@ -19,7 +19,9 @@ class ContentRecommendationService
     recommendations_from_liked_contents = recommendations_from_embeddings(embedded_liked_contents, max_items)
     recommendations_from_disliked_contents = recommendations_from_embeddings(embedded_disliked_contents, max_items)
 
-    recommendations_from_tags + recommendations_from_liked_contents - recommendations_from_disliked_contents
+    (recommendations_from_tags + recommendations_from_liked_contents - recommendations_from_disliked_contents).reject do |content|
+      liked_contents.include?(content[:id]) || disliked_contents.include?(content[:id])
+    end
   end
 
   private
