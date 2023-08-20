@@ -6,8 +6,8 @@ class ContentRecommendationService
   end
 
   def recommendations(max_items = 10)
-    liked_contents = UserContentClassification.where(user_id: self.id, classification: 'like').map(&:content_id)
-    disliked_contents = UserContentClassification.where(user_id: self.id, classification: 'dislike').map(&:content_id)
+    liked_contents = UserContentClassification.where(user_id: @user.id, classification: 'like').map(&:content_id)
+    disliked_contents = UserContentClassification.where(user_id: @user.id, classification: 'dislike').map(&:content_id)
 
     user_embedding = @user.embeddings
     embedded_liked_contents = liked_contents.map { |content_id| Content.find(content_id).embedding }
@@ -23,12 +23,13 @@ class ContentRecommendationService
   private
 
   def recommendations_from_embeddings(embeddings, max_items)
+    return [] if embeddings.empty?
     Content.where.not(embedding: nil).map do |content|
       {
         id: content.id,
         title: content.title,
         body: content.body,
-        score: cosine_similarity(embeddings, content.embedding)
+        score: cosine_similarity(JSON.parse(embeddings), JSON.parse(content.embedding))
       }
     end.sort_by { |content| content[:score] }.reverse.first(max_items)
   end

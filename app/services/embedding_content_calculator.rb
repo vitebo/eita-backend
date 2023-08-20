@@ -1,10 +1,12 @@
 class EmbeddingContentCalculator
   def initialize
-    Content.first(10).each do |content|
+    Content.all.each do |content|
       raw_body = content.raw_body
       doc = Nokogiri::HTML(raw_body)
-      content.update!(body: doc.text)
-      content.update!(embedding: EmbeddingCalculator.new.calculate_embedding(doc.text))
+      content.update(body: doc.text)
+      content.update(embedding: EmbeddingCalculator.new.calculate_embedding(doc.text))
+    rescue StandardError => e
+      puts "Error: #{e}"
     end
   end
 end

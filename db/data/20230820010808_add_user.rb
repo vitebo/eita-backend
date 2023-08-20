@@ -2,14 +2,16 @@ class AddUser < SeedMigration::Migration
   def up
     user  = User.create!(name: 'joão')
 
-    Tag.create!(name: 'ruby')
-    Tag.create!(name: 'rails')
-    Tag.create!(name: 'javascript')
-    Tag.create!(name: 'react')
-    Tag.create!(name: 'python')
-    
-    User.first.tags << Tag.all
-    
+    tags = [
+      Tag.create!(name: 'fuvest'),
+      Tag.create!(name: 'psicologia'),
+      Tag.create!(name: 'bbb'),
+      Tag.create!(name: 'netflix'),
+      Tag.create!(name: 'tcc')
+    ]
+
+    user.tags << tags
+
     user.update(embeddings: user.calculate_embedding())
   end
 
