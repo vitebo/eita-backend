@@ -1,5 +1,5 @@
 class ContentController < ApplicationController
-  def classify(classification)
+  def classify()
     user_id = params[:user_id]
     content_id = params[:content_id]
     classification = params[:classification]
