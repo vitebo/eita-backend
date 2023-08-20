@@ -33,6 +33,9 @@ class ContentRecommendationService
         id: content.id,
         title: content.title,
         body: content.body,
+        slug: content.slug,
+        kind: content.kind,
+        image: content.image_url,
         score: cosine_similarity(embeddings, JSON.parse(content.embedding))
       }
     end.sort_by { |content| content[:score] }.reverse.first(max_items)
