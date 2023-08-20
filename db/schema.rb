@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_19_233940) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_002130) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -30,6 +30,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_233940) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_content_classifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "content_id", null: false
+    t.string "classification"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id"], name: "index_user_content_classifications_on_content_id"
+    t.index ["user_id"], name: "index_user_content_classifications_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", limit: 50, null: false
     t.vector "embeddings"
@@ -46,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_19_233940) do
     t.index ["user_id"], name: "index_users_tags_on_user_id"
   end
 
+  add_foreign_key "user_content_classifications", "contents"
+  add_foreign_key "user_content_classifications", "users"
   add_foreign_key "users_tags", "tags"
   add_foreign_key "users_tags", "users"
 end

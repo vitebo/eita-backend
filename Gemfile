@@ -13,6 +13,8 @@ gem "puma", "~> 5.0"
 
 gem "ruby-openai"
 
+gem 'cosine-similarity'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 

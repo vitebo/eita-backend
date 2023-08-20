@@ -1,16 +1,11 @@
 class ContentController < ApplicationController
-  def like
+  def classify(classification)
     user_id = params[:user_id]
     content_id = params[:content_id]
-    weight = params[:weight]
+    classification = params[:classification]
 
-    render json: {}.to_json
-  end
-
-  def deslike
-    user_id = params[:user_id]
-    content_id = params[:content_id]
-    weight = params[:weight]
+    user_content_classification = UserContentClassification.find_or_create_by!(user_id: user_id, content_id: content_id)
+    user_content_classification.update!(classification: classification)
 
     render json: {}.to_json
   end
