@@ -51,3 +51,5 @@ end
 
 
 gem "neighbor", "~> 0.3.0"
+gem 'seed_migration'
+

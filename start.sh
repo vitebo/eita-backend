@@ -9,6 +9,7 @@ bundle check || bundle install
 # setup-db
 bundle exec rails db:create
 bundle exec rails db:migrate
+rake seed:migrate
 
 # start project
 rm -rf /app/tmp/pids/server.pid
