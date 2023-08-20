@@ -9,7 +9,7 @@ class EmbeddingCalculator
     response = @client.embeddings(
       parameters: {
           model: "text-embedding-ada-002",
-          input: embedd_data.join(', ')
+          input: Array(embedd_data).join(', ')
       }
     )
 

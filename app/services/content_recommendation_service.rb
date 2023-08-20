@@ -6,7 +6,7 @@ class ContentRecommendationService
     @calculator = calculator
   end
 
-  def recommendations(max_items = 10)
+  def recommendations(max_items = 20)
     liked_contents = UserContentClassification.where(user_id: @user.id, classification: UserContentClassification::CLASSIFICATION_VALUES[:like]).map(&:content_id)
     disliked_contents = UserContentClassification.where(user_id: @user.id, classification: UserContentClassification::CLASSIFICATION_VALUES[:dislike]).map(&:content_id)
 
