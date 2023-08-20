@@ -101,7 +101,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
-    matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.19.0)
@@ -185,7 +184,6 @@ DEPENDENCIES
   bootsnap
   cosine-similarity
   debug
-  matrix
   neighbor (~> 0.3.0)
   pg
   pry

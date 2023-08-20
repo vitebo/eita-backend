@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_024935) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_20_064940) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "vector"
@@ -22,6 +22,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_024935) do
     t.text "raw_body"
     t.text "body"
     t.vector "embedding"
+    t.string "updated_at", limit: 50
+    t.string "slug"
   end
 
   create_table "seed_migration_data_migrations", id: :serial, force: :cascade do |t|
