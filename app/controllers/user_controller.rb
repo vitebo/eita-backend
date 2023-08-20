@@ -22,4 +22,11 @@ class UserController < ApplicationController
       id: user.id,
     }.to_json
   end
+
+  def update
+    user_id = params[:user_id]
+    user = User.find(user_id)
+    embedding = user.calculate_embedding
+    user.update(embedding: embedding)
+  end
 end
