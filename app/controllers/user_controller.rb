@@ -1,10 +1,10 @@
 class UserController < ApplicationController
   def create
-    user = User.create!(name: 'mock')
+    user = User.create!(name: params[:name])
     interests = params[:interests]
 
     # check if interests is an array with strings
-    unless interests.is_a?(Array) && interests.all? { |i| i.is_a?(String) } do
+    unless interests.is_a?(Array) && interests.all? { |i| i.is_a?(String) }
       # respond erros to front with bad request
       render json: { error: 'Interests must be an array of strings' }, status: :bad_request
     end
@@ -19,7 +19,7 @@ class UserController < ApplicationController
     user.update(embedding: embedding)
 
     render json: {
-      id: user_id,
+      id: user.id,
     }.to_json
   end
 end

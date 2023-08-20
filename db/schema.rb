@@ -22,7 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_064940) do
     t.text "raw_body"
     t.text "body"
     t.vector "embedding"
-    t.string "updated_at", limit: 50
     t.string "slug"
   end
 

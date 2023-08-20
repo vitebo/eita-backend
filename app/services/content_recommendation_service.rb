@@ -9,7 +9,7 @@ class ContentRecommendationService
     liked_contents = UserContentClassification.where(user_id: @user.id, classification: UserContentClassification::CLASSIFICATION_VALUES[:like]).map(&:content_id)
     disliked_contents = UserContentClassification.where(user_id: @user.id, classification: UserContentClassification::CLASSIFICATION_VALUES[:dislike]).map(&:content_id)
 
-    user_embedding = @user.embeddings
+    user_embedding = @user.embedding
 
     calculator = EmbeddingCalculator.new
     embedded_liked_contents = calculator.calculate_embedding(liked_contents.map { |content_id| Content.find(content_id).title })
