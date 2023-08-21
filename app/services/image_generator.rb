@@ -8,11 +8,7 @@ class ImageGenerator
 
     response = @client.images.generate(
       parameters: {
-        prompt: """
-          Generate an image to use like a thumbnail of a blog post;
-          Avoid using text on the image.
-          Use the following context: `#{context}`
-        """,
+        prompt: "Generate a image about this course: #{context}",
         size: '256x256',
       }
     )

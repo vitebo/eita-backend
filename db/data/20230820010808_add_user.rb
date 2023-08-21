@@ -31,7 +31,7 @@ class AddUser < SeedMigration::Migration
 
     user.tags << tags
 
-    user.update(embeddings: user.calculate_embedding())
+    user.update(embedding: user.calculate_embedding())
   end
 
   def down
